@@ -12,6 +12,7 @@ public class Parqueadero {
     /**
      * Indica el n�mero de puestos en el parqueadero.
      */
+
     public static final int TAMANO = 40;
 
     /**
@@ -78,6 +79,7 @@ public class Parqueadero {
      * Indica si el parqueadero esta abierto.
      */
     private boolean abierto;
+    private int carrosa;
 
     // -----------------------------------------------------------------
     // Constructores
@@ -98,6 +100,7 @@ public class Parqueadero {
         puestos = new Puesto[TAMANO];
         for( int i = 0; i < TAMANO; i++ )
             puestos[ i ] = new Puesto( i );
+        carrosa = 0;
 
     }
 
@@ -192,6 +195,7 @@ public class Parqueadero {
                 caja = caja + porPagar;
                 puestos[ numPuesto ].sacarCarro( );
                 resultado = porPagar;
+                carrosa++;
             }
         }
 
@@ -332,7 +336,7 @@ public class Parqueadero {
 
     //2.1
 
-    public double darTiempoParqueadero() {
+    public double darTiempoPromedio() {
         if (puestos.length == 0  ) {
             return 0.0;
         }
@@ -370,21 +374,16 @@ public class Parqueadero {
     }
 
     //2.3
-    public Carro carroConMasHoras() {
-        Carro carroMasHoras = null;
-        int maxHoras = 0;
-
+    public boolean hayCarroMasDeOchoHoras() {
         for (Puesto puesto : puestos) {
             if (puesto.darCarro() != null) {
                 int horasEnParqueadero = 21 - puesto.darCarro().darHoraLlegada();
-                if (horasEnParqueadero > maxHoras) {
-                    maxHoras = horasEnParqueadero;
-                    carroMasHoras = puesto.darCarro();
+                if (horasEnParqueadero > 8) {
+                    return true;
                 }
             }
         }
-
-        return carroMasHoras;
+        return false;
     }
     //2.4
     public ArrayList<Carro> darCarrosMasDeTresHorasParqueados() {
@@ -454,20 +453,15 @@ public class Parqueadero {
             if (puesto.darCarro() != null) {
                 carrosSacados++;
                 puesto.sacarCarro();
+                carrosa++;
             }
         }
         return carrosSacados;
     }
     //3.5
     public String metodo2() {
-        int carrosSacados = 0;
-        for (Puesto puesto : puestos) {
-            if (puesto.darCarro() != null) {
-                puesto.sacarCarro();
-                carrosSacados++;
-            }
-        }
-        return "Cantidad de carros sacados: " + carrosSacados + ".";
+
+        return "Cantidad de carros sacados: " + carrosa + ".";
     }
 
 
