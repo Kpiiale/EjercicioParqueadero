@@ -370,16 +370,21 @@ public class Parqueadero {
     }
 
     //2.3
-    public boolean hayCarroMasDeOchoHoras() {
+    public Carro carroConMasHoras() {
+        Carro carroMasHoras = null;
+        int maxHoras = 0;
+
         for (Puesto puesto : puestos) {
             if (puesto.darCarro() != null) {
                 int horasEnParqueadero = 21 - puesto.darCarro().darHoraLlegada();
-                if (horasEnParqueadero > 8) {
-                    return true;
+                if (horasEnParqueadero > maxHoras) {
+                    maxHoras = horasEnParqueadero;
+                    carroMasHoras = puesto.darCarro();
                 }
             }
         }
-        return false;
+
+        return carroMasHoras;
     }
     //2.4
     public ArrayList<Carro> darCarrosMasDeTresHorasParqueados() {
@@ -471,3 +476,4 @@ public class Parqueadero {
 
 
 }
+
