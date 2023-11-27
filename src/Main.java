@@ -16,14 +16,16 @@ public class Main {
             System.out.println("5. Avanzar reloj del parqueadero");
             System.out.println("6. Cambiar tarifa del parqueadero");
             System.out.println("7. Tiempo promedio de estadia");
-            System.out.println("8. Carro con más horas en el parqueadero");
-            System.out.println("9. ¿Hay carro parqueado por más de 8 horas?");
+            System.out.println("8. Carros con más horas en el parqueaderos");
+            System.out.println("9. ¿Hay carros parqueados por más de 8 horas?");
             System.out.println("10. Carros parqueados por más de tres horas");
             System.out.println("11. ¿Hay carros con la misma placa?");
             System.out.println("12. Cantidad de carros con placa PB");
             System.out.println("13. ¿Hay carro parqueado por 24 o más horas?");
-            System.out.println("14. Desocupar parqueadero");
-            System.out.println("15. Salir");
+            System.out.println("14. Cantidad de carros con placa PB y mas de 24 horaS");
+            System.out.println("15. Desocupar parqueadero");
+            System.out.println("15. Sacar carros");
+            System.out.println("16. Salir");
             System.out.println("ingrese una opcion.");
             opc = Integer.parseInt(sc.next());
             switch (opc) {
@@ -91,45 +93,59 @@ public class Main {
                     e.cambiarTarifa(nuevaTarifa);
                     break;
                 case 7:
-                    e.darTiempoParqueadero();
-                    System.out.println("El promedio de estadia: " + e.darTiempoParqueadero());
+                    e.darTiempoPromedio();
+                    System.out.println("El promedio de estadia: " + e.darTiempoPromedio());
                     break;
                 case 8:
-                    e.carroConMasHoras();
-                    System.out.println("El carro con mas horas es: " + e.carroConMasHoras());
+                    e.darCarroMasDeOchoHoras();
+                    System.out.println("El carro con mas horas es: " + e.darCarroMasDeOchoHoras());
                     break;
 
                 case 9:
-                    e.darCarroMasDeOchoHoras();
-                    System.out.println("Los carros con mas de 8 horas son: " + e.darCarroMasDeOchoHoras());
+                    if(e.hayCarroMasDeOchoHoras()){
+                        System.out.println("SI");
+                    }else
+                        System.out.println("NO");
+
+
                     break;
                 case 10:
                     e.darCarrosMasDeTresHorasParqueados();
                     System.out.println("Los carros con mas de 3 horas son: " +e.darCarrosMasDeTresHorasParqueados());
                     break;
                 case 11:
-                    e.hayCarrosPlacaIgual();
-                    System.out.println("Los carros con la misma placa son: " +e.hayCarrosPlacaIgual());
+                    if(e.hayCarrosPlacaIgual()){
+                        System.out.println("SI");
+                    }else
+                        System.out.println("NO");
                     break;
                 case 12:
                     e.contarCarrosQueComienzanConPlacaPB();
                     System.out.println("Los carros que comienzan con la placa PB son: " +e.contarCarrosQueComienzanConPlacaPB());
                     break;
                 case 13:
-                    e.metodo1();
+                    if(e.hayCarroCon24Horas()){
+                        System.out.println("SI");
+                    }else
+                        System.out.println("NO");
+
+                case 14:
                     System.out.println(" " + e.metodo1());
                     break;
-                case 14:
+
+                case 15:
+                    System.out.println("La cantidad de autos sacados" + e.desocuparParqueadero());
+                case 16:
                     e.metodo2();
                     System.out.println(" " + e.metodo2());
                     break;
-                case 15:
+                case 17:
                     System.out.println("Fin del programa");
                     break;
                 default:
                     System.out.println("Ingrese una opción válida");
                     break;
             }
-        } while (opc != 15);
+        } while (opc != 17);
     }
 }
