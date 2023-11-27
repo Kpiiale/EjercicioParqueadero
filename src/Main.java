@@ -24,8 +24,8 @@ public class Main {
             System.out.println("13. ¿Hay carro parqueado por 24 o más horas?");
             System.out.println("14. Cantidad de carros con placa PB y mas de 24 horaS");
             System.out.println("15. Desocupar parqueadero");
-            System.out.println("15. Sacar carros");
-            System.out.println("16. Salir");
+            System.out.println("16. Sacar carros");
+            System.out.println("17. Salir");
             System.out.println("ingrese una opcion.");
             opc = Integer.parseInt(sc.next());
             switch (opc) {
