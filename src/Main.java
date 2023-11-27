@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+/** Javiel Villalba y Yuliana Capito**/
 
 
 public class Main {
